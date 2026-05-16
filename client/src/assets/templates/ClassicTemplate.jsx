@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Linkedin, Globe } from "lucide-react";
+import { Mail, Phone, MapPin, Globe } from "lucide-react";
 
 const ClassicTemplate = ({ data, accentColor }) => {
     const formatDate = (dateStr) => {
@@ -15,7 +15,7 @@ const ClassicTemplate = ({ data, accentColor }) => {
             {/* Header */}
             <header className="text-center mb-8 pb-6 border-b-2" style={{ borderColor: accentColor }}>
                 <h1 className="text-3xl font-bold mb-2" style={{ color: accentColor }}>
-                    {data.personal_info?.full_name || "Your Name"}
+                    {data.personal_info?.full_name}
                 </h1>
 
                 <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-600">
@@ -39,7 +39,7 @@ const ClassicTemplate = ({ data, accentColor }) => {
                     )}
                     {data.personal_info?.linkedin && (
                         <div className="flex items-center gap-1">
-                            <Linkedin className="size-4" />
+                            <Globe className="size-4" />
                             <span className="break-all">{data.personal_info.linkedin}</span>
                         </div>
                     )}
@@ -149,6 +149,31 @@ const ClassicTemplate = ({ data, accentColor }) => {
                         {data.skills.map((skill, index) => (
                             <div key={index} className="text-gray-700">
                                 • {skill}
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            )}
+
+            {/* Certificates */}
+            {data.certificates && data.certificates.length > 0 && (
+                <section className="mb-6">
+                    <h2 className="text-xl font-semibold mb-4" style={{ color: accentColor }}>
+                        CERTIFICATIONS
+                    </h2>
+
+                    <div className="space-y-3">
+                        {data.certificates.map((certificate, index) => (
+                            <div key={index} className="flex justify-between items-start">
+                                <div>
+                                    <h3 className="font-semibold text-gray-900">{certificate.name}</h3>
+                                    {certificate.issuer && <p className="text-gray-700">{certificate.issuer}</p>}
+                                    {certificate.credential_url && <p className="break-all text-sm text-gray-600">{certificate.credential_url}</p>}
+                                    {certificate.description && <p className="text-gray-600">{certificate.description}</p>}
+                                </div>
+                                <div className="text-sm text-gray-600">
+                                    <p>{formatDate(certificate.issue_date)}</p>
+                                </div>
                             </div>
                         ))}
                     </div>

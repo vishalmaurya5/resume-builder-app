@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Linkedin, Globe } from "lucide-react";
+import { Mail, Phone, MapPin, Globe } from "lucide-react";
 
 const ModernTemplate = ({ data, accentColor }) => {
 	const formatDate = (dateStr) => {
@@ -15,7 +15,7 @@ const ModernTemplate = ({ data, accentColor }) => {
 			{/* Header */}
 			<header className="p-8 text-white" style={{ backgroundColor: accentColor }}>
 				<h1 className="text-4xl font-light mb-3">
-					{data.personal_info?.full_name || "Your Name"}
+					{data.personal_info?.full_name}
 				</h1>
 
 				<div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm ">
@@ -39,7 +39,7 @@ const ModernTemplate = ({ data, accentColor }) => {
 					)}
 					{data.personal_info?.linkedin && (
 						<a target="_blank" href={data.personal_info?.linkedin} className="flex items-center gap-2">
-							<Linkedin className="size-4" />
+							<Globe className="size-4" />
 							<span className="break-all text-xs">{data.personal_info.linkedin.split("https://www.")[1] ? data.personal_info.linkedin.split("https://www.")[1] : data.personal_info.linkedin}</span>
 						</a>
 					)}
@@ -163,6 +163,29 @@ const ModernTemplate = ({ data, accentColor }) => {
 									>
 										{skill}
 									</span>
+								))}
+							</div>
+						</section>
+					)}
+
+					{/* Certificates */}
+					{data.certificates && data.certificates.length > 0 && (
+						<section>
+							<h2 className="text-2xl font-light mb-4 pb-2 border-b border-gray-200">
+								Certifications
+							</h2>
+
+							<div className="space-y-4">
+								{data.certificates.map((certificate, index) => (
+									<div key={index}>
+										<h3 className="font-semibold text-gray-900">{certificate.name}</h3>
+										{certificate.issuer && <p style={{ color: accentColor }}>{certificate.issuer}</p>}
+										<div className="text-sm text-gray-600">
+											{certificate.issue_date && <span>{formatDate(certificate.issue_date)}</span>}
+											{certificate.credential_url && <p className="break-all">{certificate.credential_url}</p>}
+										</div>
+										{certificate.description && <p className="text-sm text-gray-700 mt-1">{certificate.description}</p>}
+									</div>
 								))}
 							</div>
 						</section>

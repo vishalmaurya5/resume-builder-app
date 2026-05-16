@@ -84,10 +84,10 @@ const Hero = () => {
 
             {/* Headline + CTA */}
             <h1 className="text-5xl md:text-6xl font-semibold max-w-5xl text-center mt-4 md:leading-[70px]">
-                Land your dream job with <span className=" bg-gradient-to-r from-green-700 to-green-600 bg-clip-text text-transparent text-nowrap">AI-powered </span> resumes.
+                Build a professional resume that gets noticed.
             </h1>
 
-            <p className="max-w-md text-center text-base my-7">Create, edit and download professional resumes with AI-powered assistance.</p>
+            <p className="max-w-md text-center text-base my-7">Create ATS-friendly resumes with clean templates, live preview, secure saving, sharing, and print-ready export.</p>
 
             {/* CTA Buttons */}
             <div className="flex items-center gap-4 ">
@@ -97,11 +97,11 @@ const Hero = () => {
                 </Link>
                 <button className="flex items-center gap-2 border border-slate-400 hover:bg-green-50 transition rounded-full px-7 h-12 text-slate-700">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-video size-5" aria-hidden="true"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"></path><rect x="2" y="6" width="14" height="12" rx="2"></rect></svg>
-                    <span>Try demo</span>
+                    <span>View templates</span>
                 </button>
             </div>
 
-            <p className="py-6 text-slate-600 mt-14">Trusting by leading brands, including</p>
+            <p className="py-6 text-slate-600 mt-14">Designed for students, freshers, and working professionals</p>
 
             <div className="flex flex-wrap justify-between max-sm:justify-center gap-6 max-w-3xl w-full mx-auto py-4" id="logo-container">
                 {companiesLogo.map((company, index) => (

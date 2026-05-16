@@ -14,7 +14,7 @@ const MinimalTemplate = ({ data, accentColor }) => {
             {/* Header */}
             <header className="mb-10">
                 <h1 className="text-4xl font-thin mb-4 tracking-wide">
-                    {data.personal_info?.full_name || "Your Name"}
+                    {data.personal_info?.full_name}
                 </h1>
 
                 <div className="flex flex-wrap gap-6 text-sm text-gray-600">
@@ -113,13 +113,38 @@ const MinimalTemplate = ({ data, accentColor }) => {
 
             {/* Skills */}
             {data.skills && data.skills.length > 0 && (
-                <section>
+                <section className="mb-10">
                     <h2 className="text-sm uppercase tracking-widest mb-6 font-medium" style={{ color: accentColor }}>
                         Skills
                     </h2>
 
                     <div className="text-gray-700">
                         {data.skills.join(" • ")}
+                    </div>
+                </section>
+            )}
+
+            {/* Certificates */}
+            {data.certificates && data.certificates.length > 0 && (
+                <section>
+                    <h2 className="text-sm uppercase tracking-widest mb-6 font-medium" style={{ color: accentColor }}>
+                        Certifications
+                    </h2>
+
+                    <div className="space-y-4">
+                        {data.certificates.map((certificate, index) => (
+                            <div key={index} className="flex justify-between items-baseline gap-4">
+                                <div>
+                                    <h3 className="font-medium">{certificate.name}</h3>
+                                    {certificate.issuer && <p className="text-gray-600">{certificate.issuer}</p>}
+                                    {certificate.credential_url && <p className="break-all text-sm text-gray-500">{certificate.credential_url}</p>}
+                                    {certificate.description && <p className="text-gray-600">{certificate.description}</p>}
+                                </div>
+                                <span className="text-sm text-gray-500">
+                                    {formatDate(certificate.issue_date)}
+                                </span>
+                            </div>
+                        ))}
                     </div>
                 </section>
             )}

@@ -1,6 +1,22 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 
 const MinimalImageTemplate = ({ data, accentColor }) => {
+    const getProfileImage = () => {
+        const info = data.personal_info || {};
+
+        if (info.image_preview) return info.image_preview;
+        if (info.image && typeof info.image === "string") {
+            return info.image;
+        }
+        if (info.image && typeof info.image === "object") {
+            return URL.createObjectURL(info.image);
+        }
+
+        return "";
+    };
+
+    const profileImage = getProfileImage();
+
     const formatDate = (dateStr) => {
         if (!dateStr) return "";
         const [year, month] = dateStr.split("-");
@@ -16,27 +32,23 @@ const MinimalImageTemplate = ({ data, accentColor }) => {
 
                 <div className="col-span-1  py-10">
                     {/* Image */}
-                    {data.personal_info?.image && typeof data.personal_info.image === 'string' ? (
+                    {profileImage ? (
                         <div className="mb-6">
-                            <img src={data.personal_info.image} alt="Profile" className="w-32 h-32 object-cover rounded-full mx-auto" style={{ background: accentColor+'70' }} />
+                            <img src={profileImage} alt="Profile" className="w-32 h-32 object-cover rounded-full mx-auto" style={{ background: accentColor+'70' }} />
                         </div>
-                    ) : (
-                        data.personal_info?.image && typeof data.personal_info.image === 'object' ? (
-                            <div className="mb-6">
-                                <img src={URL.createObjectURL(data.personal_info.image)} alt="Profile" className="w-32 h-32 object-cover rounded-full mx-auto" />
-                            </div>
-                        ) : null
-                    )}
+                    ) : null}
                 </div>
 
                 {/* Name + Title */}
                 <div className="col-span-2 flex flex-col justify-center py-10 px-8">
                     <h1 className="text-4xl font-bold text-zinc-700 tracking-widest">
-                        {data.personal_info?.full_name || "Your Name"}
+                        {data.personal_info?.full_name}
                     </h1>
-                    <p className="uppercase text-zinc-600 font-medium text-sm tracking-widest">
-                        {data?.personal_info?.profession || "Profession"}
-                    </p>
+                    {data?.personal_info?.profession && (
+                        <p className="uppercase text-zinc-600 font-medium text-sm tracking-widest">
+                            {data.personal_info.profession}
+                        </p>
+                    )}
                 </div>
 
                 {/* Left Sidebar */}
@@ -84,6 +96,29 @@ const MinimalImageTemplate = ({ data, accentColor }) => {
                                         <p className="text-xs text-zinc-500">
                                             {formatDate(edu.graduation_date)}
                                         </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+                    )}
+
+                    {/* Certificates */}
+                    {data.certificates && data.certificates.length > 0 && (
+                        <section className="mb-8">
+                            <h2 className="text-sm font-semibold tracking-widest text-zinc-600 mb-3">
+                                CERTIFICATIONS
+                            </h2>
+                            <div className="space-y-4 text-sm">
+                                {data.certificates.map((certificate, index) => (
+                                    <div key={index}>
+                                        <p className="font-semibold uppercase">{certificate.name}</p>
+                                        {certificate.issuer && <p className="text-zinc-600">{certificate.issuer}</p>}
+                                        {certificate.issue_date && (
+                                            <p className="text-xs text-zinc-500">{formatDate(certificate.issue_date)}</p>
+                                        )}
+                                        {certificate.credential_url && (
+                                            <p className="break-all text-xs text-zinc-500">{certificate.credential_url}</p>
+                                        )}
                                     </div>
                                 ))}
                             </div>

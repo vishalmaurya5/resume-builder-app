@@ -6,23 +6,27 @@ const Testimonial = () => {
     const cardsData = [
         {
             image: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200',
-            name: 'Briar Martin',
-            handle: '@neilstellar',
+            name: 'Rohan Sharma',
+            handle: 'Software Fresher',
+            quote: 'The live preview helped me build a clean resume quickly and keep the layout professional.',
         },
         {
             image: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200',
-            name: 'Avery Johnson',
-            handle: '@averywrites',
+            name: 'Priya Mehta',
+            handle: 'MBA Student',
+            quote: 'I liked choosing a template first and then filling each section step by step.',
         },
         {
             image: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&auto=format&fit=crop&q=60',
-            name: 'Jordan Lee',
-            handle: '@jordantalks',
+            name: 'Arjun Verma',
+            handle: 'Frontend Developer',
+            quote: 'The public link and print option made it simple to send my resume to recruiters.',
         },
         {
             image: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&auto=format&fit=crop&q=60',
-            name: 'Avery Johnson',
-            handle: '@averywrites',
+            name: 'Sneha Kapoor',
+            handle: 'HR Executive',
+            quote: 'The templates are readable, structured, and suitable for professional screening.',
         },
     ];
 
@@ -40,7 +44,7 @@ const Testimonial = () => {
                     <span className="text-xs text-slate-500">{card.handle}</span>
                 </div>
             </div>
-            <p className="text-sm py-4 text-gray-800">Radiant made undercutting all of our competitors an absolute breeze.</p>
+            <p className="text-sm py-4 text-gray-800">{card.quote}</p>
         </div>
     );
 
@@ -53,7 +57,7 @@ const Testimonial = () => {
            <BookUserIcon className="size-4.5 stroke-green-600"/>
             <span>Testimonial</span>
      </div>
-     <Title title="Don't just take our words" description="Our streamlined process helps you create a professional resume in minute with intelligent AI-powered tools and features."/>
+     <Title title="Trusted by job seekers" description="A focused resume builder for creating, saving, previewing, and sharing professional resumes."/>
 
     
     

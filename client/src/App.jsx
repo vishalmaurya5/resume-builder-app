@@ -6,13 +6,16 @@ import Login from './pages/Login';
 import Layout from './pages/Layout';
 import ResumeBuilder from './pages/ResumeBuilder';
 import Preview from './pages/Preview';
+import ProtectedRoute from './components/ProtectedRoute';
 const App = () => {
   return (
     <Routes>
       <Route path='/' element={<Home />} />
-      <Route path='app' element={<Layout />}>
-        <Route index element={<Dashboard />} />
-        <Route path='builder/:resumeId' element={<ResumeBuilder />} />
+      <Route element={<ProtectedRoute />}>
+        <Route path='app' element={<Layout />}>
+          <Route index element={<Dashboard />} />
+          <Route path='builder/:resumeId' element={<ResumeBuilder />} />
+        </Route>
       </Route>
       <Route path='view/:resumeId' element={<Preview />} />
       <Route path='login' element={<Login />} />
