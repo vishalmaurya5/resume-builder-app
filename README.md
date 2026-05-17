@@ -441,6 +441,33 @@ This README can be expanded into a thesis report using the following chapter str
 - Add version history for resumes.
 - Add analytics for public resume views.
 
+## References
+
+### Technology References
+
+- React: https://react.dev/
+- Vite: https://vite.dev/
+- Tailwind CSS: https://tailwindcss.com/
+- React Router: https://reactrouter.com/
+- Clerk React Authentication: https://clerk.com/docs/react/getting-started/quickstart
+- Lucide React Icons: https://lucide.dev/
+- Node.js: https://nodejs.org/
+- Express.js: https://expressjs.com/
+- MongoDB: https://www.mongodb.com/
+- Mongoose: https://mongoosejs.com/
+- MongoDB Atlas: https://www.mongodb.com/products/platform/atlas-database
+- dotenv: https://github.com/motdotla/dotenv
+- CORS middleware: https://github.com/expressjs/cors
+- Morgan logger: https://github.com/expressjs/morgan
+
+### UI Reference
+
+- Prebuilt UI was used as a UI design reference for selected landing page sections and layout inspiration: https://prebuiltui.com/
+
+### Project Idea Reference
+
+- GreatStack was used as a project idea and learning reference for the resume builder concept and implementation direction: https://www.youtube.com/@GreatStackDev
+
 ## Conclusion
 
 Resume Builder provides a complete digital workflow for professional resume creation. It combines a responsive React frontend, secure authentication, MongoDB storage, reusable resume templates, live preview, public sharing, and print-ready output. The project is suitable for academic submission because it demonstrates full-stack development, database design, authentication, protected routes, CRUD operations, responsive UI design, and real-world problem solving.
