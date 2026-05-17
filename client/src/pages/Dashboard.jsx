@@ -191,14 +191,14 @@ const Dashboard = () => {
         <hr className="my-6 border-slate-200" />
 
         <section className="mb-8">
-          <div className="mb-3 flex flex-wrap items-end justify-between gap-3">
+          <div className="mb-3 flex flex-wrap items-end justify-between gap-3  ">
             <div>
-              <h2 className="text-lg font-semibold text-slate-900">Resume templates</h2>
+              <h2 className="text-lg font-semibold text-slate-900 ">Resume templates</h2>
               <p className="text-sm text-slate-500">Choose from live template previews with filled dummy resume data.</p>
             </div>
           </div>
 
-          <div className="grid gap-5 lg:grid-cols-2">
+          <div className="grid gap-5 lg:grid-cols-2 bg-blue-200 p-3 group border-lime-900 border-5 border-solid rounded-lg">
             {templateOptions.map((template, index) => {
               const baseColor = colors[index % colors.length]
               const previewResume = getTemplatePreviewResume(template.id, baseColor)
@@ -294,7 +294,7 @@ const ResumeTemplatePreview = ({ resume, accentColor, scale = 0.34, className = 
   const previewResume = { ...resume, accent_color: accentColor }
 
   return (
-    <div className={`overflow-hidden rounded-md border border-slate-200 bg-slate-200 shadow-inner ${className}`}>
+    <div className={`overflow-hidden rounded-md border border-slate-200 bg-gray-200 shadow-inner ${className}`}>
       <div className="pointer-events-none origin-top-left" style={{ width: 795, transform: `scale(${scale})` }}>
         <ResumeTemplateRenderer data={previewResume} accentColor={accentColor} />
       </div>
