@@ -578,7 +578,7 @@ const ResumeBuilder = () => {
                 <TextInput label="Field" value={item.field} onChange={(event) => updateListItem('education', index, 'field', event.target.value)} />
                 <TextInput label="Institution" className="sm:col-span-2" value={item.institution} onChange={(event) => updateListItem('education', index, 'institution', event.target.value)} />
                 <TextInput label="Graduation date" type="month" value={item.graduation_date} onChange={(event) => updateListItem('education', index, 'graduation_date', event.target.value)} />
-                <TextInput label="GPA" value={item.gpa} onChange={(event) => updateListItem('education', index, 'gpa', event.target.value)} />
+                <TextInput label="CGPA" value={item.gpa} onChange={(event) => updateListItem('education', index, 'gpa', event.target.value)} />
               </div>
             </EditorBlock>
           ))}
@@ -671,11 +671,10 @@ const ResumeBuilder = () => {
                 key={template.id}
                 type="button"
                 onClick={() => handleTemplateSelect(template.id)}
-                className={`flex items-center justify-between rounded-lg border p-4 text-left transition ${
-                  resumeData.template === template.id
+                className={`flex items-center justify-between rounded-lg border p-4 text-left transition ${resumeData.template === template.id
                     ? 'border-blue-500 bg-blue-50 text-blue-900'
                     : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
-                }`}
+                  }`}
               >
                 <span>
                   <span className="block font-semibold">{template.name}</span>
@@ -708,9 +707,8 @@ const ResumeBuilder = () => {
                 type="button"
                 aria-label={`Use ${color}`}
                 onClick={() => updateResume('accent_color', color)}
-                className={`size-9 rounded-full border-2 ${
-                  resumeData.accent_color === color ? 'border-slate-900 ring-2 ring-slate-300' : 'border-white'
-                }`}
+                className={`size-9 rounded-full border-2 ${resumeData.accent_color === color ? 'border-slate-900 ring-2 ring-slate-300' : 'border-white'
+                  }`}
                 style={{ backgroundColor: color }}
               />
             ))}
@@ -773,9 +771,8 @@ const ResumeBuilder = () => {
                     type="button"
                     onClick={() => setActiveSectionIndex(index)}
                     title={section.name}
-                    className={`flex h-10 items-center justify-center rounded-md transition ${
-                      active ? 'bg-blue-600 text-white' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'
-                    }`}
+                    className={`flex h-10 items-center justify-center rounded-md transition ${active ? 'bg-blue-600 text-white' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'
+                      }`}
                   >
                     <Icon className="size-4" />
                   </button>

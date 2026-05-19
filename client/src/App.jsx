@@ -7,6 +7,7 @@ import Layout from './pages/Layout';
 import ResumeBuilder from './pages/ResumeBuilder';
 import Preview from './pages/Preview';
 import ProtectedRoute from './components/ProtectedRoute';
+import Templates from './pages/Templates';
 const App = () => {
   return (
     <Routes>
@@ -19,6 +20,7 @@ const App = () => {
       </Route>
       <Route path='view/:resumeId' element={<Preview />} />
       <Route path='login' element={<Login />} />
+      <Route path='templates' element={<Templates />} />
     </Routes>
   )
 }
