@@ -3,7 +3,7 @@ import express from 'express'
 import morgan from 'morgan'
 import authRoutes from './routes/authRoutes.js'
 import resumeRoutes from './routes/resumeRoutes.js'
-import { errorHandler, notFound } from './middleware/errorHandler.js'
+// Removed: notFound and errorHandler imports since the frontend wildcard handles this now
 
 const app = express()
 const allowedOrigins = new Set([
@@ -28,12 +28,13 @@ app.use(
 app.use(express.json({ limit: '15mb' }))
 app.use(morgan('dev'))
 
-// Example: Ensure your backend (e.g., Express.js) has a catch-all error handler
+// Global API error handler for actual backend bugs
 app.use((err, req, res, next) => {
-  console.error(err.stack); // Log the actual error to your server console
-  res.status(500).json({ error: 'Internal Server Error', details: err.message });
-});
+  console.error(err.stack)
+  res.status(500).json({ error: 'Internal Server Error', details: err.message })
+})
 
+// --- API Routes ---
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'Resume Builder API is healthy' })
 })
@@ -41,7 +42,7 @@ app.get('/api/health', (req, res) => {
 app.use('/api/auth', authRoutes)
 app.use('/api/resumes', resumeRoutes)
 
-app.use(notFound)
-app.use(errorHandler)
+// ❌ REMOVED: app.use(notFound) and app.use(errorHandler)
+// Keeping these here prevents your frontend files from being served.
 
 export default app
