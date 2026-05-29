@@ -28,6 +28,12 @@ app.use(
 app.use(express.json({ limit: '15mb' }))
 app.use(morgan('dev'))
 
+// Example: Ensure your backend (e.g., Express.js) has a catch-all error handler
+app.use((err, req, res, next) => {
+  console.error(err.stack); // Log the actual error to your server console
+  res.status(500).json({ error: 'Internal Server Error', details: err.message });
+});
+
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'Resume Builder API is healthy' })
 })
