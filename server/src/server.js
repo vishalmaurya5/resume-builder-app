@@ -16,4 +16,13 @@ connectDB()
     console.error('Failed to start API server:', error.message)
     process.exit(1)
   })
+const path = require('path');
+
+// 1. Serve the static files from the Vite frontend build directory
+app.use(express.static(path.join(__dirname, '../../client/dist')));
+
+// 2. Handle any routing requests by sending back the main index.html file
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
+});
 
