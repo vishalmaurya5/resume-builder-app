@@ -14,7 +14,7 @@ const app = (
 
 createRoot(document.getElementById('root')).render(
   import.meta.env.VITE_CLERK_PUBLISHABLE_KEY ? (
-    <ClerkProvider afterSignOutUrl="/">{app}</ClerkProvider>
+    <ClerkProvider publishableKey={import.meta.env.VITE_CLERK_PUBLISHABLE_KEY} afterSignOutUrl="/">{app}</ClerkProvider>
   ) : (
     <MissingClerkKey />
   ),
